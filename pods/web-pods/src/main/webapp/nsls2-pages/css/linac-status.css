@@ -1,0 +1,23 @@
+.top-banner {
+    font-weight:bold;
+    text-align: right;
+    position: absolute;
+    color: red;
+}
+
+.banner {
+    width:100%;
+    height:100px;
+    position:fixed;
+ }
+ .logo {
+     float:left;
+ }
+
+ .led {
+    float:left;
+    width:20px;
+    height:20px;
+    position: absolute;
+    margin-top: 2px;
+ }

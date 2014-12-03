@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" language="javascript" src="../js/webpods-client.js"></script>
+<script type="text/javascript" language="javascript" src="../js/widgets/led.js"></script>
+
+<script>
+        var pathName = document.location.pathname.replace("nsls2-pages/linac-status.html", "");
+        var wsUri = "ws://"+document.location.host+pathName+"socket";
+        var wp = new Client(wsUri);
+    </script>
+<link href="css/linac-status.css" rel="stylesheet"  type="text/css">
+
+<title></title>
+</head>
+<body>
+<div class="top">
+    <div class="top-banner">
+        <div class="led" id = "led1" class="led" data-channel="sim/flipflop"></div>
+        <img class="logo" src="Images/NSLS2logo.png" alt="" />
+        <img class="banner" src="Images/NSLS2blue.png" alt="" role="banner"/>
+    </div>
+</div>
+</body>
+</html>
