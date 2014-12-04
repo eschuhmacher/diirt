@@ -1,23 +1,47 @@
 .top-banner {
     font-weight:bold;
     text-align: right;
-    position: absolute;
     color: red;
+    float: left;
 }
 
 .banner {
     width:100%;
     height:100px;
-    position:fixed;
+    position:absolute;
  }
  .logo {
-     float:left;
  }
 
  .led {
     float:left;
     width:20px;
     height:20px;
-    position: absolute;
     margin-top: 2px;
  }
+.container1 {
+    border: solid;
+}
+
+.label {
+    float:left;
+    width: 190px;
+    height: 30px;
+}
+
+.textinput {
+
+    width: 133px;
+    height: 27px;
+    display: inline-block;
+}
+
+textarea {
+    resize: none;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.mainLabel {
+    display: inline-block;
+}
