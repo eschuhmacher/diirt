@@ -19,9 +19,9 @@ $(document).ready(function() {
         var input = document.createElement("textarea");
         input.id = id;
         var div = document.getElementById(id);
-        var style = nodes[i].getAttribute("style");
-        input.style = style;
         div.appendChild(input);
+        fitToContainer(div.firstChild);
+
         if (channelname != null && channelname.trim().length > 0) {
             var callback = function(evt, channel) {
                                switch (evt.type) {
