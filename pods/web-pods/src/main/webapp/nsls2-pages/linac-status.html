@@ -8,6 +8,8 @@
 <script type="text/javascript" language="javascript" src="../js/webpods-client.js"></script>
 <script type="text/javascript" language="javascript" src="../js/widgets/led.js"></script>
 <script type="text/javascript" language="javascript" src="../js/widgets/textinput.js"></script>
+<script type="text/javascript" language="javascript" src="../js/widgets/xygraph2.js"></script>
+<script src="http://dygraphs.com/dygraph-combined.js"></script>
 
 <script>
         var pathName = document.location.pathname.replace("nsls2-pages/linac-status.html", "");
@@ -20,73 +22,170 @@
 </head>
 <body>
     <div class="top-banner">
-        <div id = "led1" class="led" data-channel="sim/flipflop"></div>
+        <div id = "led1" class="led" data-channel="OP-CT{IOC:opsum}:HEARTBEAT" style="position: absolute;"></div>
         <img class="logo" src="Images/NSLS2logo.png" alt="" />
         <img class="banner" src="Images/NSLS2blue.png" alt="" role="banner"/>
     </div>
-<div class="image">
-        <img class="linac" src="Images/linac.png" alt="" />
-</div>
-<div class="containers">
-    <div class="container1">
-        <div class="mainLabel">
-            <div class="label" id="label1">Beam Current</div>
-        </div>
-        <br>
-        <div class="pair">
-            <div class="label" id="label2">WCM1</div>
-            <div id ="textUpdate10" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)"></div>
-        </div>
-        <br>
-        <div class="pair">
-        <div class="label" id="label3">ICT1</div>
-        <div id = "textUpdate11" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)"></div>
-        </div>
-        <br>
-        <div class="pair">
-            <div class="label" id="label4">% Efficiency</div>
-            <div id = "textUpdate12" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)"></div>
-        </div>
-        <br>
-        <div class="pair">
-            <div class="label" id="label5">FC</div>
-            <div id = "textUpdate13" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)"></div>
-        </div>
-        <br>
-        <div class="mainLabel">
-            <div class="label" id="label6">Gun State</div>
-        </div>
-        <br>
-        <div class="pair">
-            <div id = "led2" class="led" data-channel="sim/flipflop"></div>
-            <div id="textUpdate14" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)"></div>
-        </div>
-        <br>
-        <div class="pair">
-            <div class="label" id="label6">Mode</div>
-            <div id = "textUpdate15" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)" ></div>
-        </div>
-        <br>
-        <div class="pair">
-            <div class="label" id="label7">Rate</div>
-            <div id = "textUpdate16" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)"></div>
-        </div>
-        <br>
-        <div class="mainLabel">
-            <div class="label" id="label8">Gun Trigger</div>
-        </div>
-        <br>
-        <div class="pair">
-            <div class="label" id="label9">Request</div>
-            <div id = "led3" class="led" data-channel="sim/flipflop"></div>
-            <div id = "textUpdate17" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)"></div>
-        </div>
-        <br>
-        <div class="pair">
-            <div class="label" id="label10">Status</div>
-            <div id = "led4" class="led" data-channel="sim/flipflop"></div>
-            <div id = "textUpdate18" class="textinput" data-channel="sim/ramp(0, 100, 1, 1)"></div>
+
+    <div class="image">
+            <img class="linac" src="Images/linac.png" alt="" />
     </div>
-</div>
+    <div class="table">
+        <div class="row">
+            <div class="col">
+            <div class="mainLabel">
+                <div class="label" id="label1">Beam Current</div>
+            </div>
+            <br>
+            <div class="pair">
+                <div class="label" id="label2">WCM1</div>
+                <div id ="textUpdate10" class="textinput" data-enable="false"  data-channel="LN-BI{WCM:1}SumQ-I"></div>
+            </div>
+            <br>
+            <div class="pair">
+            <div class="label" id="label3">ICT1</div>
+            <div id = "textUpdate11" class="textinput" data-enable="false"  data-channel="LTB-BI{ICT:1}Q-I"></div>
+            </div>
+            <br>
+            <div class="pair">
+                <div class="label" id="label4">% Efficiency</div>
+                <div id = "textUpdate12" class="textinput" data-enable="false"  data-channel="100*LTB-BI{ICT:1}Q-I/LN-BI{WCM:1}SumQ-I"></div>
+            </div>
+            <br>
+            <div class="pair">
+                <div class="label" id="label5">FC</div>
+                <div id = "textUpdate13" class="textinput" data-enable="false"  data-channel="LN-DG{FRC:1}In-Cmd"></div>
+                <div id = "textUpdate113" class="textinput" data-enable="false"  data-channel="LN-BI{FC:1}SumQ-I"></div>
+            </div>
+            <br>
+            <div class="mainLabel">
+                <div class="label" id="label6">Gun State</div>
+            </div>
+            <br>
+            <div class="pair">
+                <div id = "led2" class="led" data-channel="LN-RF{CAB:1}MON-I"></div>
+                <div id="textUpdate14" class="textinput" data-enable="false"  data-channel="LN-RF{CAB:1}MON-I"></div>
+            </div>
+            <br>
+            <div class="pair">
+                <div class="label" id="label6">Mode</div>
+                <div id = "textUpdate15" class="textinput" data-enable="false"  data-channel="LN-RF{CPS:1}PULSEMODE-Cmd" ></div>
+            </div>
+            <br>
+            <div class="pair">
+                <div class="label" id="label7">Rate</div>
+                <div id = "textUpdate16" class="textinput" data-enable="false"  data-channel="ACC-TS{EVG-SSC}Mode-Sel"></div>
+            </div>
+            <br>
+            <div class="mainLabel">
+                <div class="label" id="label8">Gun Trigger</div>
+            </div>
+            <br>
+            <div class="pair">
+                <div class="label" id="label9">Request</div>
+                <div id = "led3" class="led" data-channel="LN{EGUN}Request-Sel"></div>
+                <div id = "textUpdate17" class="textinput" data-enable="false"  data-channel="LN{EGUN}Request-Sel"></div>
+            </div>
+            <br>
+            <div class="pair">
+                <div class="label" id="label10">Status</div>
+                <div id = "led4" class="led" data-channel="LN{EGUN}I:Lck-Sts"></div>
+                <div id = "textUpdate18" class="textinput" data-enable="false"  data-channel="LN{EGUN}I:Lck-Sts"></div>
+        </div>
+    </div>
+            <div class="col">
+                <div class="container2">
+                    <div class="pair">
+                        <div class="label" id="label9">Rad Mons</div>
+                        <div id = "led6" class="led" data-channel="LN-AM{RadMon}Alrm:Sum-Sts"></div>
+                        <div id = "textUpdate26" class="textinput" data-enable="false"  data-channel="LN-AM{RadMon}Alrm:Sum-Sts"></div>
+                    </div>
+                    <br>
+                    <div class="pair">
+                        <div class="label" id="label10">LN Tunnel</div>
+                        <div id = "led7" class="led" data-channel="LN-PPS:A{}Secured:LN-Sts"></div>
+                        <div id = "textUpdate27" class="textinput" data-enable="false"  data-channel="LN-PPS:A{}Secured:LN-Sts"></div>
+                    </div>
+                </div>
+                <br>
+                <div class="container2" style="width: 90%;">
+                    <div class="mainLabel">
+                        <div class="label" id="label11">FC Norm. Fill Pattern</div>
+                    </div>
+                    <div id = "graph1" class="xygraph" data-channel="LN-BI{FC:1}FillPattern-Wf" data-type="'column" data-channel-readonly="true"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mainLabel">
+                    <div class="label" id="label1">Beam Current</div>
+                </div>
+                <br>
+                <div class="pair">
+                    <div class="label" id="label2">FC</div>
+                    <div id = "led15" class="led" data-channel="LN-DG{FRC:1}In-Cmd"></div>
+                    <div id ="textUpdate1" class="textinput" data-enable="false"  data-channel="LN-DG{FRC:1}In-Cmd"></div>
+                </div>
+                <br>
+                <div class="pair">
+                    <div class="label" id="label3">FLAGS</div>
+                    <div id = "led16" class="led" data-channel="LN-DG{SCR:1}In-Cmd"></div>
+                    <div id = "textUpdate2" class="textinput" data-enable="false"  data-channel="LN-DG{SCR:1}In-Cmd"></div>
+                </div>
+                <br>
+                <div class="mainLabel">
+                    <div class="label" id="label6">Vacuum Status</div>
+                </div>
+                <br>
+                <div class="pair">
+                    <div class="label" id="label4">Valves</div>
+                    <div id = "led17" class="led" data-channel="LN-VA{GV:1}Pos-I"></div>
+                    <div id = "textUpdate3" class="textinput" data-enable="false"  data-channel="LN-VA{GV:1}Pos-I"></div>
+                </div>
+                <br>
+                <div class="mainLabel">
+                    <div class="label" id="label8">Power Supply Status</div>
+                </div>
+                <br>
+                <div class="pair">
+                    <div class="label" id="label5">Sol</div>
+                    <div id = "led18" class="led" data-channel="LN-MG{SOL}:PS-01:Sts-Pwr"></div>
+                    <div id = "textUpdate4" class="textinput" data-enable="false"  data-channel="LN-MG{SOL}:PS-01:Sts-Pwr"></div>
+                </div>
+                <br>
+                <div class="pair">
+                    <div class="label" id="label11">Quad</div>
+                    <div id = "led8" class="led" data-channel="LN-MG{QDP}:PS-01:Sts-Pwr"></div>
+                    <div id="textUpdate5" class="textinput" data-enable="false"  data-channel="LN-MG{QDP}:PS-01:Sts-Pwr"></div>
+                </div>
+                <br>
+                <div class="pair">
+                    <div class="label" id="label6">Corr</div>
+                    <div id = "led19" class="led" data-channel="LN-MG{STE}:PS-01:Sts-Pwr"></div>
+                    <div id = "textUpdate6" class="textinput" data-enable="false"  data-channel="LN-MG{STE}:PS-01:Sts-Pwr" ></div>
+                </div>
+                <br>
+                <div class="mainLabel">
+                    <div class="label" id="labela1">RF Mod Status</div>
+                </div>
+                <br>
+                <div class="pair">
+                    <div class="label" id="label7">Mod HV</div>
+                    <div id = "led20" class="led" data-channel="LN-RF{KLY:1}Pwr:Fwd-I"></div>
+                    <div id = "textUpdate7" class="textinput" data-enable="false"  data-channel="LN-RF{KLY:1}Pwr:Fwd-I"></div>
+                </div>
+                <br>
+                <div class="pair">
+                    <div class="label2" id="labela9">#1</div>
+                    <div id = "textUpdate38" class="textinput" data-enable="false"  data-channel="LN-RF{KLY:1}Pwr:Fwd-I"></div>
+                    <div class="label2" id="labela10">#2</div>
+                    <div id = "textUpdate39" class="textinput" data-enable="false"  data-channel="LN-RF{KLY:2}Pwr:Fwd-I"></div>
+                    <div class="label2" id="labela11">#3</div>
+                    <div id = "textUpdate40" class="textinput" data-enable="false"  data-channel="LN-RF{KLY:3}Pwr:Fwd-I"></div>
+                    <div class="label2" id="labela12">MW</div>
+                </div>
+            </div>
+        </div>
+        <div id = "graph2" class="xygraph2" data-channel="LN-BI{WCM:1}SumQ-I" data-channel-readonly="true"></div>
+    </div>
 </body>
 </html>

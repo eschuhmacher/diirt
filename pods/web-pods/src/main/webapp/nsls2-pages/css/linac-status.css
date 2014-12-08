@@ -1,12 +1,12 @@
 .top-banner {
     font-weight:bold;
-    text-align: right;
     color: red;
-    float: left;
 }
-
+.image {
+    width: auto;
+}
 .banner {
-    width:100%;
+    width:auto;
     height:100px;
     position:absolute;
  }
@@ -18,22 +18,45 @@
     width:20px;
     height:20px;
     margin-top: 2px;
+    padding-right: 10px;
  }
-.container1 {
+
+ .table {
+     display: table;
+     border-collapse: separate;
+     border-spacing: 10px 0;
+ }
+
+ .col {
+     display: table-cell;
+     padding: 10px;
+     border: solid;
+     margin: 10px;
+     width: 30%;
+ }
+
+
+.container2 {
     border: solid;
+    padding: 10px;
+    float: left;
+    margin: 10px;
+    width: 90%;
 }
 
 .label {
+    font-weight:bold;
+    color: blue;
     float:left;
-    width: 190px;
+    width: 50%;
     height: 30px;
 }
 
 .textinput {
 
-    width: 133px;
+    width: 40%;
     height: 27px;
-    display: inline-block;
+    display: inline-flex;
 }
 
 textarea {
@@ -43,5 +66,54 @@ textarea {
 }
 
 .mainLabel {
+    font-weight:bold;
+    color: blue;
+    width:100%;
     display: inline-block;
+}
+
+#graph2 {
+    float:left;
+    height: 200px;
+    width: 80%;
+    border-style: solid;
+    border-width: 1px;
+    margin : 10px;
+}
+
+#graph1 {
+    float:left;
+    height: 200px;
+    width: 90%;
+    border-style: solid;
+    border-width: 1px;
+    margin: 20px;
+}
+
+#led1 {
+    padding-right: 0px;
+}
+
+.label2 {
+    float:left;
+    width: 10%;
+    height: 30px;
+}
+
+#textUpdate38 {
+    width: 10%;
+    height: 27px;
+    float: left;
+}
+
+#textUpdate39 {
+    width: 10%;
+    height: 27px;
+    float: left;
+}
+
+#textUpdate40 {
+    width: 10%;
+    height: 27px;
+    float: left;
 }
