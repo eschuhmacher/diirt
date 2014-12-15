@@ -117,3 +117,15 @@ textarea {
     height: 27px;
     float: left;
 }
+
+#textUpdate13 {
+    width: 20%;
+    height: 27px;
+    display: inline-flex;
+}
+
+#textUpdate113 {
+    width: 20%;
+    height: 27px;
+    display: inline-flex;
+}
