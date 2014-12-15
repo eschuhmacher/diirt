@@ -49,7 +49,7 @@
             <br>
             <div class="pair">
                 <div class="label" id="label4">% Efficiency</div>
-                <div id = "textUpdate12" class="textinput" data-enable="false"  data-channel="100*LTB-BI{ICT:1}Q-I/LN-BI{WCM:1}SumQ-I"></div>
+                <div id = "textUpdate12" class="textinput" data-enable="false"  data-channel="=100*'LTB-BI{ICT:1}Q-I'/'LN-BI{WCM:1}SumQ-I'"></div>
             </div>
             <br>
             <div class="pair">
@@ -63,7 +63,7 @@
             </div>
             <br>
             <div class="pair">
-                <div id = "led2" class="led" data-channel="LN-RF{CAB:1}MON-I"></div>
+                <div id = "led2" class="led" data-channel="='LN-RF{CAB:1}MON-I'==7"></div>
                 <div id="textUpdate14" class="textinput" data-enable="false"  data-channel="LN-RF{CAB:1}MON-I"></div>
             </div>
             <br>
@@ -89,7 +89,7 @@
             <br>
             <div class="pair">
                 <div class="label" id="label10">Status</div>
-                <div id = "led4" class="led" data-channel="LN{EGUN}I:Lck-Sts"></div>
+                <div id = "led4" class="led" data-channel="='LN{EGUN}I:Lck-Sts'==1"></div>
                 <div id = "textUpdate18" class="textinput" data-enable="false"  data-channel="LN{EGUN}I:Lck-Sts"></div>
         </div>
     </div>
@@ -97,13 +97,13 @@
                 <div class="container2">
                     <div class="pair">
                         <div class="label" id="label9">Rad Mons</div>
-                        <div id = "led6" class="led" data-channel="LN-AM{RadMon}Alrm:Sum-Sts"></div>
+                        <div id = "led6" class="led" data-channel="='LN-AM{RadMon}Alrm:Sum-Sts'==0"></div>
                         <div id = "textUpdate26" class="textinput" data-enable="false"  data-channel="LN-AM{RadMon}Alrm:Sum-Sts"></div>
                     </div>
                     <br>
                     <div class="pair">
                         <div class="label" id="label10">LN Tunnel</div>
-                        <div id = "led7" class="led" data-channel="LN-PPS:A{}Secured:LN-Sts"></div>
+                        <div id = "led7" class="led" data-channel="='LN-PPS:A{}Secured:LN-Sts'==1&&'LN-PPS:B{}Secured:LN-Sts'==1"></div>
                         <div id = "textUpdate27" class="textinput" data-enable="false"  data-channel="LN-PPS:A{}Secured:LN-Sts"></div>
                     </div>
                 </div>
@@ -117,18 +117,18 @@
             </div>
             <div class="col">
                 <div class="mainLabel">
-                    <div class="label" id="label1">Beam Current</div>
+                    <div class="label" id="label1">Diagnostics Status</div>
                 </div>
                 <br>
                 <div class="pair">
                     <div class="label" id="label2">FC</div>
-                    <div id = "led15" class="led" data-channel="LN-DG{FRC:1}In-Cmd"></div>
+                    <div id = "led15" class="led" data-channel="='LN-DG{FRC:1}In-Cmd'==0"></div>
                     <div id ="textUpdate1" class="textinput" data-enable="false"  data-channel="LN-DG{FRC:1}In-Cmd"></div>
                 </div>
                 <br>
                 <div class="pair">
                     <div class="label" id="label3">FLAGS</div>
-                    <div id = "led16" class="led" data-channel="LN-DG{SCR:1}In-Cmd"></div>
+                    <div id = "led16" class="led" data-channel="='LN-DG{SCR:1}In-Cmd'==0&&'LN-DG{SCR:2}In-Cmd'==0&&'LN-DG{SCR:3}Pos-I'==2&&'LN-DG{SCR:4}Pos-I'==2&&'LN-DG{SCR:5}Pos-I'==2&&'LN-DG{SCR:6}Pos-I'==2"></div>
                     <div id = "textUpdate2" class="textinput" data-enable="false"  data-channel="LN-DG{SCR:1}In-Cmd"></div>
                 </div>
                 <br>
@@ -138,7 +138,7 @@
                 <br>
                 <div class="pair">
                     <div class="label" id="label4">Valves</div>
-                    <div id = "led17" class="led" data-channel="LN-VA{GV:1}Pos-I"></div>
+                    <div id = "led17" class="led" data-channel="='LN-VA{GV:1}Pos-I'==2&&'LN-VA{GV:2}Pos-I'==2&&'LN-VA{GV:3}Pos-I'==2&&'LN-VA{GV:4}Pos-I'==2&&'LN-VA{GV:5}Pos-I'==2&&'LN-VA{GV:6}Pos-I'==2"></div>
                     <div id = "textUpdate3" class="textinput" data-enable="false"  data-channel="LN-VA{GV:1}Pos-I"></div>
                 </div>
                 <br>
@@ -148,19 +148,24 @@
                 <br>
                 <div class="pair">
                     <div class="label" id="label5">Sol</div>
-                    <div id = "led18" class="led" data-channel="LN-MG{SOL}:PS-01:Sts-Pwr"></div>
+                    <div id = "led18" class="led" data-channel="='LN-MG{SOL}:PS-01:Sts-Pwr'==1&&'LN-MG{SOL}:PS-02:Sts-Pwr'==1&&'LN-MG{SOL}:PS-03:Sts-Pwr'==1&&'LN-MG{SOL}:PS-04:Sts-Pwr'==1&&
+                    'LN-MG{SOL}:PS-05:Sts-Pwr'==1&&'LN-MG{SOL}:PS-06:Sts-Pwr'==1&&'LN-MG{SOL}:PS-07:Sts-Pwr'==1&&'LN-MG{SOL}:PS-08:Sts-Pwr'==1&&'LN-MG{SOL}:PS-09:Sts-Pwr'==1&&'LN-MG{SOL}:PS-10:Sts-Pwr'==1&&'LN-MG{SOL}:PS-11:Sts-Pwr'==1"></div>
                     <div id = "textUpdate4" class="textinput" data-enable="false"  data-channel="LN-MG{SOL}:PS-01:Sts-Pwr"></div>
                 </div>
                 <br>
                 <div class="pair">
                     <div class="label" id="label11">Quad</div>
-                    <div id = "led8" class="led" data-channel="LN-MG{QDP}:PS-01:Sts-Pwr"></div>
+                    <div id = "led8" class="led" data-channel="='LN-MG{QDP}:PS-01:Sts-Pwr'==1&&'LN-MG{QDP}:PS-02:Sts-Pwr'==1&&'LN-MG{QDP}:PS-03:Sts-Pwr'==1&&'LN-MG{QDP}:PS-04:Sts-Pwr'==1&&'LN-MG{QDP}:PS-05:Sts-Pwr'==1&&
+                    'LN-MG{QDP}:PS-06:Sts-Pwr'==1&&'LN-MG{QDP}:PS-07:Sts-Pwr'==1&&'LN-MG{QDP}:PS-08:Sts-Pwr'==1&&'LN-MG{QDP}:PS-09:Sts-Pwr'==1"></div>
                     <div id="textUpdate5" class="textinput" data-enable="false"  data-channel="LN-MG{QDP}:PS-01:Sts-Pwr"></div>
                 </div>
                 <br>
                 <div class="pair">
                     <div class="label" id="label6">Corr</div>
-                    <div id = "led19" class="led" data-channel="LN-MG{STE}:PS-01:Sts-Pwr"></div>
+                    <div id = "led19" class="led" data-channel="'=LN-MG{STE}:PS-01:Sts-Pwr'==1&&'LN-MG{STE}:PS-02:Sts-Pwr'==1&&'LN-MG{STE}:PS-03:Sts-Pwr'==1&&'LN-MG{STE}:PS-04:Sts-Pwr'==1&&L'N-MG{STE}:PS-05:Sts-Pwr'==1&&
+                    'LN-MG{STE}:PS-06:Sts-Pwr'==1&&'LN-MG{STE}:PS-07:Sts-Pwr'==1&&'LN-MG{STE}:PS-08:Sts-Pwr'==1&&'LN-MG{STE}:PS-09:Sts-Pwr'==1&&'LN-MG{STE}:PS-10:Sts-Pwr'==1&&'LN-MG{STE}:PS-11:Sts-Pwr'==1&&
+                    'LN-MG{STE}:PS-12:Sts-Pwr'==1&&'LN-MG{STE}:PS-13:Sts-Pwr'==1&&'LN-MG{STE}:PS-14:Sts-Pwr'==1&&
+                    'LN-MG{STE}:PS-15:Sts-Pwr'==1&&'LN-MG{STE}:PS-16:Sts-Pwr'==1&&'LN-MG{STE}:PS-17:Sts-Pwr'==1&&'LN-MG{STE}:PS-18:Sts-Pwr'==1&&'LN-MG{STE}:PS-19:Sts-Pwr'==1&&'LN-MG{STE}:PS-20:Sts-Pwr'==1"></div>
                     <div id = "textUpdate6" class="textinput" data-enable="false"  data-channel="LN-MG{STE}:PS-01:Sts-Pwr" ></div>
                 </div>
                 <br>
@@ -170,7 +175,7 @@
                 <br>
                 <div class="pair">
                     <div class="label" id="label7">Mod HV</div>
-                    <div id = "led20" class="led" data-channel="LN-RF{KLY:1}Pwr:Fwd-I"></div>
+                    <div id = "led20" class="led" data-channel="='LN-RF{KLY:1}Pwr:Fwd-I'>0.1&&'LN-RF{KLY:2}Pwr:Fwd-I'<=0.1&&'LN-RF{KLY:3}Pwr:Fwd-I'>0.1"></div>
                     <div id = "textUpdate7" class="textinput" data-enable="false"  data-channel="LN-RF{KLY:1}Pwr:Fwd-I"></div>
                 </div>
                 <br>
