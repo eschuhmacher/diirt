@@ -10,6 +10,8 @@
 <script type="text/javascript" language="javascript" src="../js/widgets/textinput.js"></script>
 <script type="text/javascript" language="javascript" src="../js/widgets/xygraph2.js"></script>
 <script src="http://dygraphs.com/dygraph-combined.js"></script>
+<script src="http://code.highcharts.com/highcharts.js" ></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
 
 <script>
         var pathName = document.location.pathname.replace("nsls2-pages/linac-status.html", "");
@@ -63,7 +65,7 @@
             </div>
             <br>
             <div class="pair">
-                <div id = "led2" class="led" data-channel="='LN-RF{CAB:1}MON-I'==7"></div>
+                <div id = "led2" class="led" data-channel="=indexOf('LN-RF{CAB:1}MON-I')==7"></div>
                 <div id="textUpdate14" class="textinput" data-enable="false"  data-channel="LN-RF{CAB:1}MON-I"></div>
             </div>
             <br>
@@ -89,7 +91,7 @@
             <br>
             <div class="pair">
                 <div class="label" id="label10">Status</div>
-                <div id = "led4" class="led" data-channel="='LN{EGUN}I:Lck-Sts'==1"></div>
+                <div id = "led4" class="led" data-channel="=indexOf('LN{EGUN}I:Lck-Sts')==1"></div>
                 <div id = "textUpdate18" class="textinput" data-enable="false"  data-channel="LN{EGUN}I:Lck-Sts"></div>
         </div>
     </div>
@@ -97,13 +99,13 @@
                 <div class="container2">
                     <div class="pair">
                         <div class="label" id="label9">Rad Mons</div>
-                        <div id = "led6" class="led" data-channel="='LN-AM{RadMon}Alrm:Sum-Sts'==0"></div>
+                        <div id = "led6" class="led" data-channel="=indexOf('LN-AM{RadMon}Alrm:Sum-Sts')==0"></div>
                         <div id = "textUpdate26" class="textinput" data-enable="false"  data-channel="LN-AM{RadMon}Alrm:Sum-Sts"></div>
                     </div>
                     <br>
                     <div class="pair">
                         <div class="label" id="label10">LN Tunnel</div>
-                        <div id = "led7" class="led" data-channel="='LN-PPS:A{}Secured:LN-Sts'==1&&'LN-PPS:B{}Secured:LN-Sts'==1"></div>
+                        <div id = "led7" class="led" data-channel="=indexOf('LN-PPS:A{}Secured:LN-Sts')==1&&indexOf('LN-PPS:B{}Secured:LN-Sts')==1"></div>
                         <div id = "textUpdate27" class="textinput" data-enable="false"  data-channel="LN-PPS:A{}Secured:LN-Sts"></div>
                     </div>
                 </div>
@@ -122,13 +124,14 @@
                 <br>
                 <div class="pair">
                     <div class="label" id="label2">FC</div>
-                    <div id = "led15" class="led" data-channel="='LN-DG{FRC:1}In-Cmd'==0"></div>
+                    <div id = "led15" class="led" data-channel="=indexOf('LN-DG{FRC:1}In-Cmd')==0"></div>
                     <div id ="textUpdate1" class="textinput" data-enable="false"  data-channel="LN-DG{FRC:1}In-Cmd"></div>
                 </div>
                 <br>
                 <div class="pair">
                     <div class="label" id="label3">FLAGS</div>
-                    <div id = "led16" class="led" data-channel="='LN-DG{SCR:1}In-Cmd'==0&&'LN-DG{SCR:2}In-Cmd'==0&&'LN-DG{SCR:3}Pos-I'==2&&'LN-DG{SCR:4}Pos-I'==2&&'LN-DG{SCR:5}Pos-I'==2&&'LN-DG{SCR:6}Pos-I'==2"></div>
+                    <div id = "led16" class="led" data-channel="=indexOf('LN-DG{SCR:1}In-Cmd')==0&&indexOf('LN-DG{SCR:2}In-Cmd')==0&&indexOf('LN-DG{SCR:3}Pos-I')==2&&indexOf('LN-DG{SCR:4}Pos-I')==2
+                    &&indexOf('LN-DG{SCR:5}Pos-I')==2&&indexOf('LN-DG{SCR:6}Pos-I')==2"></div>
                     <div id = "textUpdate2" class="textinput" data-enable="false"  data-channel="LN-DG{SCR:1}In-Cmd"></div>
                 </div>
                 <br>
@@ -138,7 +141,8 @@
                 <br>
                 <div class="pair">
                     <div class="label" id="label4">Valves</div>
-                    <div id = "led17" class="led" data-channel="='LN-VA{GV:1}Pos-I'==2&&'LN-VA{GV:2}Pos-I'==2&&'LN-VA{GV:3}Pos-I'==2&&'LN-VA{GV:4}Pos-I'==2&&'LN-VA{GV:5}Pos-I'==2&&'LN-VA{GV:6}Pos-I'==2"></div>
+                    <div id = "led17" class="led" data-channel="=indexOf('LN-VA{GV:1}Pos-I')==2&&indexOf('LN-VA{GV:2}Pos-I')==2&&indexOf('LN-VA{GV:3}Pos-I')==2&&indexOf('LN-VA{GV:4}Pos-I')==2
+                    &&indexOf('LN-VA{GV:5}Pos-I')==2&&indexOf('LN-VA{GV:6}Pos-I')==2"></div>
                     <div id = "textUpdate3" class="textinput" data-enable="false"  data-channel="LN-VA{GV:1}Pos-I"></div>
                 </div>
                 <br>
@@ -148,24 +152,28 @@
                 <br>
                 <div class="pair">
                     <div class="label" id="label5">Sol</div>
-                    <div id = "led18" class="led" data-channel="='LN-MG{SOL}:PS-01:Sts-Pwr'==1&&'LN-MG{SOL}:PS-02:Sts-Pwr'==1&&'LN-MG{SOL}:PS-03:Sts-Pwr'==1&&'LN-MG{SOL}:PS-04:Sts-Pwr'==1&&
-                    'LN-MG{SOL}:PS-05:Sts-Pwr'==1&&'LN-MG{SOL}:PS-06:Sts-Pwr'==1&&'LN-MG{SOL}:PS-07:Sts-Pwr'==1&&'LN-MG{SOL}:PS-08:Sts-Pwr'==1&&'LN-MG{SOL}:PS-09:Sts-Pwr'==1&&'LN-MG{SOL}:PS-10:Sts-Pwr'==1&&'LN-MG{SOL}:PS-11:Sts-Pwr'==1"></div>
+                    <div id = "led18" class="led" data-channel="=indexOf('LN-MG{SOL}:PS-01:Sts-Pwr')==1&&indexOf('LN-MG{SOL}:PS-02:Sts-Pwr')==1&&indexOf('LN-MG{SOL}:PS-03:Sts-Pwr')==1&&indexOf('LN-MG{SOL}:PS-04:Sts-Pwr')==1
+                    &&indexOf('LN-MG{SOL}:PS-05:Sts-Pwr')==1&&indexOf('LN-MG{SOL}:PS-06:Sts-Pwr')==1&&indexOf('LN-MG{SOL}:PS-07:Sts-Pwr')==1&&indexOf('LN-MG{SOL}:PS-08:Sts-Pwr')==1&&indexOf('LN-MG{SOL}:PS-09:Sts-Pwr')==1
+                    &&indexOf('LN-MG{SOL}:PS-10:Sts-Pwr')==1&&indexOf('LN-MG{SOL}:PS-11:Sts-Pwr')==1"></div>
                     <div id = "textUpdate4" class="textinput" data-enable="false"  data-channel="LN-MG{SOL}:PS-01:Sts-Pwr"></div>
                 </div>
                 <br>
                 <div class="pair">
                     <div class="label" id="label11">Quad</div>
-                    <div id = "led8" class="led" data-channel="='LN-MG{QDP}:PS-01:Sts-Pwr'==1&&'LN-MG{QDP}:PS-02:Sts-Pwr'==1&&'LN-MG{QDP}:PS-03:Sts-Pwr'==1&&'LN-MG{QDP}:PS-04:Sts-Pwr'==1&&'LN-MG{QDP}:PS-05:Sts-Pwr'==1&&
-                    'LN-MG{QDP}:PS-06:Sts-Pwr'==1&&'LN-MG{QDP}:PS-07:Sts-Pwr'==1&&'LN-MG{QDP}:PS-08:Sts-Pwr'==1&&'LN-MG{QDP}:PS-09:Sts-Pwr'==1"></div>
+                    <div id = "led8" class="led" data-channel="=indexOf('LN-MG{QDP}:PS-01:Sts-Pwr')==1&&indexOf('LN-MG{QDP}:PS-02:Sts-Pwr')==1&&indexOf('LN-MG{QDP}:PS-03:Sts-Pwr')==1
+                    &&indexOf('LN-MG{QDP}:PS-04:Sts-Pwr')==1&&indexOf('LN-MG{QDP}:PS-05:Sts-Pwr')==1
+                    &&indexOf('LN-MG{QDP}:PS-06:Sts-Pwr')==1&&indexOf('LN-MG{QDP}:PS-07:Sts-Pwr')==1&&indexOf('LN-MG{QDP}:PS-08:Sts-Pwr')==1&&indexOf('LN-MG{QDP}:PS-09:Sts-Pwr')==1"></div>
                     <div id="textUpdate5" class="textinput" data-enable="false"  data-channel="LN-MG{QDP}:PS-01:Sts-Pwr"></div>
                 </div>
                 <br>
                 <div class="pair">
                     <div class="label" id="label6">Corr</div>
-                    <div id = "led19" class="led" data-channel="'=LN-MG{STE}:PS-01:Sts-Pwr'==1&&'LN-MG{STE}:PS-02:Sts-Pwr'==1&&'LN-MG{STE}:PS-03:Sts-Pwr'==1&&'LN-MG{STE}:PS-04:Sts-Pwr'==1&&L'N-MG{STE}:PS-05:Sts-Pwr'==1&&
-                    'LN-MG{STE}:PS-06:Sts-Pwr'==1&&'LN-MG{STE}:PS-07:Sts-Pwr'==1&&'LN-MG{STE}:PS-08:Sts-Pwr'==1&&'LN-MG{STE}:PS-09:Sts-Pwr'==1&&'LN-MG{STE}:PS-10:Sts-Pwr'==1&&'LN-MG{STE}:PS-11:Sts-Pwr'==1&&
-                    'LN-MG{STE}:PS-12:Sts-Pwr'==1&&'LN-MG{STE}:PS-13:Sts-Pwr'==1&&'LN-MG{STE}:PS-14:Sts-Pwr'==1&&
-                    'LN-MG{STE}:PS-15:Sts-Pwr'==1&&'LN-MG{STE}:PS-16:Sts-Pwr'==1&&'LN-MG{STE}:PS-17:Sts-Pwr'==1&&'LN-MG{STE}:PS-18:Sts-Pwr'==1&&'LN-MG{STE}:PS-19:Sts-Pwr'==1&&'LN-MG{STE}:PS-20:Sts-Pwr'==1"></div>
+                    <div id = "led19" class="led" data-channel="=indexOf('LN-MG{STE}:PS-01:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-02:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-03:Sts-Pwr')==1
+                    &&indexOf('LN-MG{STE}:PS-04:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-05:Sts-Pwr')==1
+                    &&indexOf('LN-MG{STE}:PS-06:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-07:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-08:Sts-Pwr'==1)&&indexOf('LN-MG{STE}:PS-09:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-10:Sts-Pwr')==1
+                    &&indexOf('LN-MG{STE}:PS-11:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-12:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-13:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-14:Sts-Pwr')==1
+                    &&indexOf('LN-MG{STE}:PS-15:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-16:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-17:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-18:Sts-Pwr')==1
+                    &&indexOf('LN-MG{STE}:PS-19:Sts-Pwr')==1&&indexOf('LN-MG{STE}:PS-20:Sts-Pwr')==1"></div>
                     <div id = "textUpdate6" class="textinput" data-enable="false"  data-channel="LN-MG{STE}:PS-01:Sts-Pwr" ></div>
                 </div>
                 <br>
