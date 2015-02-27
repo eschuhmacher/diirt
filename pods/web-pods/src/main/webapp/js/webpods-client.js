@@ -396,17 +396,17 @@ function Client(url, debug, maxRate, username, password) {
 	}
 
     /**
-     * Set cahnnel value.
+     * Set channel value.
      * @param {number} channelIDIndex id of the Channel.
      * @param {object} value updated value to be set.
      */
 	function setChannelValue(channelIDIndex, value){
-		var json = JSON.stringify({
+		/*var json = JSON.stringify({
             "message" : "write",
 			"id" : channelIDIndex,
 			"value" : value
 		});
-		clientSelf.sendText(json);
+		clientSelf.sendText(json);*/
 	}
 
     /**
